@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
+#include "search_way.h"
 /*
 * memory allocation for a sx*sy array
 */
@@ -210,7 +210,8 @@ int main(int argc, char** argv) {
 	int sx = atoi(argv[1]);
 	int sy = atoi(argv[2]);
 	struct Maze * maze = gen_eller(sx, sy);
-
+	//HERE WE PUT OUR SEARCHING_WAY FUNCTION
+	Lee(maze);	
 #ifdef PRINT
 	if(sx % 2 == 0)
 		sx--;
@@ -226,8 +227,8 @@ int main(int argc, char** argv) {
 					printf("\e[48;5;22m  ");
 //					printf("#");
 					break;
-				case EMPTY:
-					printf("\e[48;5;0m  ");
+				case HERO:
+					printf("\e[48;5;10m  ");
 //					printf(" ");
 					break;
 				case IN:
@@ -239,6 +240,8 @@ int main(int argc, char** argv) {
 //					printf("F");
 					break;
 				default:
+					printf("\e[48;5;0m  ");
+//					printf(" ");
 					break;
 			}
 		}

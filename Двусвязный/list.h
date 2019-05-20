@@ -2,9 +2,9 @@
 
 #define _LIST_H_
 
-
-typedef int _data_type;
-
+#ifndef _data_type
+	typedef int _data_type;
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,10 +1,9 @@
+#include "consts.h"
 #ifndef _LIST_H_
 
 #define _LIST_H_
 
-
-typedef int _data_type;
-
+typedef struct Point _data_type;
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -33,8 +32,15 @@ struct list * list_create(_data_type x)
 	s -> data = x;
 	l -> first = s;
 	l -> last = s;
-	printf("%p %p %p %p %p\n", l, l->first, l->last, s->next, s->prev);
+	//printf("%p %p %p %p %p\n", l, l->first, l->last, s->next, s->prev);
 	return l;
+}
+
+struct list * list_create_null()
+{	
+	struct list * l = (struct list *)malloc(sizeof(struct list));
+	l -> first = NULL;
+	l -> last = NULL;
 }
 
 struct Node * first(struct list * l)
@@ -94,7 +100,7 @@ struct Node * pop_back(struct list * l)
 	if( (empty(l)) || (l -> first == l -> last))
 	{
 		l -> first = l -> last = NULL;
-		printf("Stack is empty!!!\n");	
+		//printf("Stack is empty!!!\n");	
 	}
 	else
 	{
@@ -111,9 +117,8 @@ struct Node * pop_front(struct list * l)
 	struct Node * t = l -> first;
 	if( (empty(l)) || (l -> first == l -> last))
 	{
-		printf("here\n");
 		l -> first = l -> last = NULL;
-		printf("Stack is empty!!!\n");	
+		//printf("Stack is empty!!!\n");	
 	}
 	else
 	{
@@ -124,7 +129,7 @@ struct Node * pop_front(struct list * l)
 }
 
 
-struct Node * search(struct list * l, _data_type x)
+/*struct Node * search(struct list * l, _data_type x)
 {
 
 	struct Node * t = l -> first;
@@ -141,11 +146,11 @@ struct Node * search(struct list * l, _data_type x)
 
 	}
 	return t;
-}
+}*/
 
 
 
-void print_list(struct list * l)
+/*void print_list(struct list * l)
 {
 	struct Node * t = l -> first;
 	while(t != NULL)
@@ -154,5 +159,5 @@ void print_list(struct list * l)
 		t = (t -> next);
 	}
 	printf("\n");
-}
+}*/
 #endif
