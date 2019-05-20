@@ -1,8 +1,3 @@
-#ifndef _LIST_H_
-
-#define _LIST_H_
-
-
 typedef int _data_type;
 
 
@@ -20,9 +15,6 @@ struct list
 	struct Node * first;
 	struct Node * last;
 };
-
-
-int empty(struct list * l);
 
 struct list * list_create(_data_type x)
 {
@@ -49,37 +41,23 @@ struct Node * last(struct list * l)
 
 void push_front(struct list * l, _data_type x)
 {
-	
-	if(!empty(l))
-	{
-		struct Node * t = (struct Node *)malloc(sizeof(struct Node));
-		t -> data = x;
-		t -> prev = NULL;
-		t -> next = l -> first;
-		l -> first -> prev = t;
-		l -> first = t;
-	}
-	else
-	{
-		*l = *list_create(x);	
-	}
+	struct Node * t = (struct Node *)malloc(sizeof(struct Node));
+	t -> data = x;
+	t -> prev = NULL;
+	t -> next = l -> first;
+	l -> first -> prev = t;
+	l -> first = t;
 }
 
 void push_back(struct list * l, _data_type x)
 {
-	if(!empty(l))
-	{
-		struct Node * t = (struct Node *)malloc(sizeof(struct Node));
-		t -> data = x;
-		t -> next = NULL;
-		t -> prev = l -> last;
-		l -> last -> next = t;
-		l -> last = t;
-	}
-	else
-	{
-		*l = *list_create(x);	
-	}
+	struct Node * t = (struct Node *)malloc(sizeof(struct Node));
+	t -> data = x;
+	t -> next = NULL;
+	t -> prev = l -> last;
+	l -> last -> next = t;
+	l -> last = t;
+		
 }
 
 int empty(struct list * l)
@@ -155,4 +133,3 @@ void print_list(struct list * l)
 	}
 	printf("\n");
 }
-#endif
